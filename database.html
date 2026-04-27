@@ -72,67 +72,211 @@
 <script>
 const allData = [
   {
-    id: "famine",
-    title: "Great Irish Famine Begins",
-    start_date: "1845",
-    interaction_type: "Colonial Context",
-    place: "Ireland",
-    description: "The potato blight led to mass starvation and emigration under British colonial rule.",
-    source: "https://www.bl.uk/"
-  },
-  {
-    id: "choctaw-donation",
-    title: "Choctaw Nation Donation",
-    start_date: "1847",
-    interaction_type: "Mutual Aid",
+    id: "E001",
+    title: "Choctaw Nation Donation to Ireland",
+    start_date: "1847-03-01",
+    interaction_type: "Aid / Philanthropy",
     place: "Choctaw Nation",
-    description: "The Choctaw Nation raised funds for Irish famine relief despite recent displacement.",
-    source: "https://www.choctawnation.com/"
+    description: "Choctaw Nation members raised approximately $170 for Irish famine relief shortly after the Trail of Tears.",
+    source: "Irish Famine Relief Wikipedia"
   },
   {
-    id: "irish-emigration",
-    title: "Irish Emigration to North America",
-    start_date: "1845–1855",
-    interaction_type: "Migration",
-    place: "North America",
-    description: "Irish migration reshaped settler colonial societies and intersected with Indigenous lands.",
-    source: "https://www.loc.gov/"
+    id: "E002",
+    title: "Trail of Tears Relocation",
+    start_date: "1830-01-01",
+    interaction_type: "Forced Relocation",
+    place: "Southeastern United States",
+    description: "Removal of Choctaw and other tribes under the Indian Removal Act; context for subsequent Irish aid.",
+    source: "Trail of Tears Wikipedia"
   },
   {
-    id: "colonial-expansion",
-    title: "Expansion of Settler Colonialism",
-    start_date: "19th century",
-    interaction_type: "Colonial Context",
-    place: "North America",
-    description: "Irish immigrants became part of expanding settler colonial systems displacing Indigenous peoples.",
-    source: "https://www.nationalarchives.gov.uk/"
-  },
-  {
-    id: "kindred-spirits",
-    title: "Kindred Spirits Sculpture",
-    start_date: "2017",
-    interaction_type: "Commemoration",
+    id: "E003",
+    title: "Irish Immigrant Observations of Native Struggles",
+    start_date: "1800-01-01",
+    interaction_type: "Cultural Observation",
     place: "Ireland",
-    description: "A sculpture honoring the Choctaw donation and symbolizing cross-cultural solidarity.",
-    source: "https://www.corkcoco.ie/"
+    description: "Irish immigrants documented similarities between British oppression in Ireland and Native American treatment in the U.S.",
+    source: "Irish Famine Relief Wikipedia"
   },
   {
-    id: "irish-to-navajo",
-    title: "Irish Donations to Navajo Nation",
-    start_date: "2020",
-    interaction_type: "Mutual Aid",
+    id: "E004",
+    title: "Irish Famine Relief Distribution",
+    start_date: "1847-04-01",
+    interaction_type: "Aid / Philanthropy",
+    place: "Ireland",
+    description: "International famine relief funds, including Choctaw contributions, distributed across Ireland.",
+    source: "Choctaw Delegation Visit Coverage"
+  },
+  {
+    id: "E005",
+    title: "Midleton Kindred Spirits Memorial Installation",
+    start_date: "2017-06-18",
+    interaction_type: "Commemoration / Cultural Memory",
+    place: "Midleton",
+    description: "Installation of the ‘Kindred Spirits’ sculpture honoring Choctaw aid during the famine.",
+    source: "Kindred Spirits Sculpture Coverage"
+  },
+  {
+    id: "E006",
+    title: "Choctaw Delegation Visit to Ireland",
+    start_date: "2017-06-01",
+    interaction_type: "Cultural Exchange",
+    place: "Midleton",
+    description: "Choctaw representatives visited Ireland for memorial events and cultural exchange.",
+    source: "Kindred Spirits Sculpture Coverage"
+  },
+  {
+    id: "E007",
+    title: "Irish Presidential Visit to Choctaw Nation",
+    start_date: "1995-01-01",
+    interaction_type: "Diplomatic / Commemorative",
+    place: "Dublin (Mansion House)",
+    description: "President Mary Robinson visited the Choctaw Nation to thank them for famine relief support.",
+    source: "Academic/Conference Coverage"
+  },
+  {
+    id: "E008",
+    title: "Irish–Choctaw Scholarship and Cultural Programs",
+    start_date: "2018-01-01",
+    interaction_type: "Educational / Cultural Exchange",
+    place: "Midleton",
+    description: "Ongoing initiatives fostering Irish–Choctaw educational and cultural connections.",
+    source: "Scholarship Program Documentation"
+  },
+  {
+    id: "E009",
+    title: "Irish COVID-19 Aid to Navajo and Hopi",
+    start_date: "2020-05-01",
+    interaction_type: "Reciprocal Aid / Philanthropy",
     place: "Navajo Nation",
-    description: "Irish donors raised funds for Navajo communities during COVID-19.",
-    source: "https://www.navajo-nsn.gov/"
+    description: "Irish donors raised funds for Navajo and Hopi communities during COVID-19, inspired by Choctaw history.",
+    source: "Navajo/Hopi COVID Aid Article"
   },
   {
-    id: "global-solidarity",
-    title: "Global Indigenous–Irish Solidarity",
-    start_date: "21st century",
-    interaction_type: "Activism",
-    place: "Global",
-    description: "Modern movements connect Irish and Indigenous histories of colonialism and resistance.",
-    source: "https://native-land.ca/"
+    id: "E010",
+    title: "Native Americans and the Irish Conference",
+    start_date: "2018-06-01",
+    interaction_type: "Academic / Cultural Dialogue",
+    place: "New York City",
+    description: "Conference exploring Irish–Native American historical and contemporary connections.",
+    source: "Poetry & Cultural Collaboration Coverage"
+  },
+  {
+    id: "E011",
+    title: "Choctaw-Ireland Scholarship Program",
+    start_date: "2019-01-01",
+    interaction_type: "Educational / Cultural Exchange",
+    place: "Midleton",
+    description: "Scholarship program strengthening ties between Choctaw students and Ireland.",
+    source: "Choctaw Nation Official History"
+  },
+  {
+    id: "E012",
+    title: "Irish Settlers Arrive",
+    start_date: "1600",
+    interaction_type: "Relocation",
+    place: "Eastern United States",
+    description: "Irish settlers move into Indigenous lands, interacting through trade, marriage, and diplomacy.",
+    source: "Irish Settlers"
+  },
+  {
+    id: "E013",
+    title: "Acts of Union Passed",
+    start_date: "1801",
+    interaction_type: "Legal Act",
+    place: "Dublin (Mansion House)",
+    description: "Creation of the United Kingdom, dissolving Irish parliament under Westminster control.",
+    source: "Irish Famine Relief Wikipedia"
+  },
+  {
+    id: "E014",
+    title: "Treaty of Dancing Rabbit Creek",
+    start_date: "1830-09-07",
+    interaction_type: "Forced Relocation",
+    place: "Choctaw Nation",
+    description: "Choctaw cede Mississippi lands and are relocated to Indian Territory.",
+    source: "Choctaw Nation Official History"
+  },
+  {
+    id: "E015",
+    title: "Irish Missionaries",
+    start_date: "1850",
+    interaction_type: "Educational / Cultural Exchange",
+    place: "Southeastern United States",
+    description: "Irish missionaries travel to Indigenous communities for Catholic conversion efforts.",
+    source: "Irish Settlers"
+  },
+  {
+    id: "E016",
+    title: "American Civil War",
+    start_date: "1861",
+    interaction_type: "War",
+    place: "Choctaw Nation",
+    description: "Indigenous nations are divided while Irish soldiers primarily fight for the Union.",
+    source: "Choctaw Nation Official History"
+  },
+  {
+    id: "E017",
+    title: "Famine Walk",
+    start_date: "1990-05-01",
+    interaction_type: "Diplomatic / Commemorative",
+    place: "Eastern United States",
+    description: "Choctaw leaders participate in Ireland’s Famine Walk commemorations in County Mayo.",
+    source: "Choctaw Nation Official History"
+  },
+  {
+    id: "E018",
+    title: "Eamon de Valera Honorary Adoption",
+    start_date: "1919-10-18",
+    interaction_type: "Cultural Exchange",
+    place: "Choctaw Nation",
+    description: "Eamon de Valera is made an honorary Indigenous chief while fundraising for Irish independence.",
+    source: "Choctaw Delegation Visit Coverage"
+  },
+  {
+    id: "E019",
+    title: "Trek from Mississippi to Oklahoma",
+    start_date: "1992-05-01",
+    interaction_type: "Diplomatic / Commemorative",
+    place: "Choctaw Nation",
+    description: "Irish commemorative trek retraces Choctaw displacement routes in solidarity remembrance.",
+    source: "Choctaw Nation Official History"
+  },
+  {
+    id: "E020",
+    title: "Mansion House Plaque",
+    start_date: "1992-05-29",
+    interaction_type: "Diplomatic / Commemorative",
+    place: "Dublin (Mansion House)",
+    description: "Plaque unveiled honoring Choctaw famine relief contribution.",
+    source: "Navajo/Hopi COVID Aid Article"
+  },
+  {
+    id: "E021",
+    title: "COVID-19 Relief Fundraising",
+    start_date: "2020",
+    interaction_type: "Aid / Philanthropy",
+    place: "Dublin (Mansion House)",
+    description: "Irish donors raise over $3 million for Navajo and Hopi Nations during COVID-19.",
+    source: "Navajo/Hopi COVID Aid Article"
+  },
+  {
+    id: "E022",
+    title: "Eternal Heart Sculpture",
+    start_date: "2024-08-30",
+    interaction_type: "Diplomatic / Commemorative",
+    place: "Choctaw Nation",
+    description: "Unveiling of ‘Eternal Heart’ monument celebrating ongoing Irish–Choctaw friendship.",
+    source: "Kindred Spirits Sculpture Coverage"
+  },
+  {
+    id: "E023",
+    title: "Navajo Hopi Rug Gift",
+    start_date: "2025-07-17",
+    interaction_type: "Diplomatic / Commemorative",
+    place: "Choctaw Nation",
+    description: "Navajo and Hopi Nations gift a woven rug to Ireland in gratitude for COVID-era solidarity.",
+    source: "Navajo/Hopi COVID Aid Article"
   }
 ];
 
