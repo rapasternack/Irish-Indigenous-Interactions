@@ -17,9 +17,27 @@ h1, h2, h3 {
 
 /* container */
 .container {
-  max-width: 900px;
+  max-width: 1100px;
   margin: auto;
-  padding: 0 15px;
+  padding: 60px 20px;
+}
+
+/* =========================
+   GLOBAL LINKS
+========================= */
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #ffffff;
+}
+
+a:hover {
+  color: #c2a878;
+  text-decoration: underline;
 }
 
 /* =========================
@@ -84,7 +102,7 @@ nav {
 ========================= */
 .container {
   padding: 60px 20px;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
 }
 
@@ -191,7 +209,7 @@ nav {
 .container {
   max-width: 1100px;
   margin: auto;
-  padding: 20px;
+  padding: 60px 20px;
 }
 
 /* SEARCH BAR */
