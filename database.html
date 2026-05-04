@@ -12,7 +12,6 @@
 
 <body>
 
-<!-- NAVIGATION -->
 <nav>
   <div class="nav-container">
     <h1 class="logo">Irish–Indigenous Interactions</h1>
@@ -27,7 +26,6 @@
   </div>
 </nav>
 
-<!-- INTRO -->
 <section class="section">
   <div class="container">
     <h2>Primary Source Database</h2>
@@ -38,20 +36,13 @@
   </div>
 </section>
 
-<!-- DATABASE -->
 <section class="section light">
   <div class="container">
 
     <h2>Explore the Database</h2>
 
-    <!-- FILTER BAR -->
     <div class="filter-bar">
-      <input 
-        type="text" 
-        id="searchInput" 
-        placeholder="Search events..."
-        class="filter-input"
-      >
+      <input type="text" id="searchInput" placeholder="Search events..." class="filter-input">
 
       <select id="filterType" class="filter-select">
         <option value="">All Categories</option>
@@ -62,222 +53,245 @@
       </select>
     </div>
 
-    <!-- CARD GRID -->
     <div id="cardContainer" class="grid"></div>
 
   </div>
 </section>
 
-<!-- SCRIPT -->
 <script>
 const allData = [
-  {
-    id: "E001",
-    title: "Choctaw Nation Donation to Ireland",
-    start_date: "1847-03-01",
-    interaction_type: "Aid / Philanthropy",
-    place: "Choctaw Nation",
-    description: "Choctaw Nation members raised approximately $170 for Irish famine relief shortly after the Trail of Tears.",
-    source: "Irish Famine Relief Wikipedia"
-  },
-  {
-    id: "E002",
-    title: "Trail of Tears Relocation",
-    start_date: "1830-01-01",
-    interaction_type: "Forced Relocation",
-    place: "Southeastern United States",
-    description: "Removal of Choctaw and other tribes under the Indian Removal Act; context for subsequent Irish aid.",
-    source: "Trail of Tears Wikipedia"
-  },
-  {
-    id: "E003",
-    title: "Irish Immigrant Observations of Native Struggles",
-    start_date: "1800-01-01",
-    interaction_type: "Cultural Observation",
-    place: "Ireland",
-    description: "Irish immigrants documented similarities between British oppression in Ireland and Native American treatment in the U.S.",
-    source: "Irish Famine Relief Wikipedia"
-  },
-  {
-    id: "E004",
-    title: "Irish Famine Relief Distribution",
-    start_date: "1847-04-01",
-    interaction_type: "Aid / Philanthropy",
-    place: "Ireland",
-    description: "International famine relief funds, including Choctaw contributions, distributed across Ireland.",
-    source: "Choctaw Delegation Visit Coverage"
-  },
-  {
-    id: "E005",
-    title: "Midleton Kindred Spirits Memorial Installation",
-    start_date: "2017-06-18",
-    interaction_type: "Commemoration / Cultural Memory",
-    place: "Midleton",
-    description: "Installation of the ‘Kindred Spirits’ sculpture honoring Choctaw aid during the famine.",
-    source: "Kindred Spirits Sculpture Coverage"
-  },
-  {
-    id: "E006",
-    title: "Choctaw Delegation Visit to Ireland",
-    start_date: "2017-06-01",
-    interaction_type: "Cultural Exchange",
-    place: "Midleton",
-    description: "Choctaw representatives visited Ireland for memorial events and cultural exchange.",
-    source: "Kindred Spirits Sculpture Coverage"
-  },
-  {
-    id: "E007",
-    title: "Irish Presidential Visit to Choctaw Nation",
-    start_date: "1995-01-01",
-    interaction_type: "Diplomatic / Commemorative",
-    place: "Dublin (Mansion House)",
-    description: "President Mary Robinson visited the Choctaw Nation to thank them for famine relief support.",
-    source: "Academic/Conference Coverage"
-  },
-  {
-    id: "E008",
-    title: "Irish–Choctaw Scholarship and Cultural Programs",
-    start_date: "2018-01-01",
-    interaction_type: "Educational / Cultural Exchange",
-    place: "Midleton",
-    description: "Ongoing initiatives fostering Irish–Choctaw educational and cultural connections.",
-    source: "Scholarship Program Documentation"
-  },
-  {
-    id: "E009",
-    title: "Irish COVID-19 Aid to Navajo and Hopi",
-    start_date: "2020-05-01",
-    interaction_type: "Reciprocal Aid / Philanthropy",
-    place: "Navajo Nation",
-    description: "Irish donors raised funds for Navajo and Hopi communities during COVID-19, inspired by Choctaw history.",
-    source: "Navajo/Hopi COVID Aid Article"
-  },
-  {
-    id: "E010",
-    title: "Native Americans and the Irish Conference",
-    start_date: "2018-06-01",
-    interaction_type: "Academic / Cultural Dialogue",
-    place: "New York City",
-    description: "Conference exploring Irish–Native American historical and contemporary connections.",
-    source: "Poetry & Cultural Collaboration Coverage"
-  },
-  {
-    id: "E011",
-    title: "Choctaw-Ireland Scholarship Program",
-    start_date: "2019-01-01",
-    interaction_type: "Educational / Cultural Exchange",
-    place: "Midleton",
-    description: "Scholarship program strengthening ties between Choctaw students and Ireland.",
-    source: "Choctaw Nation Official History"
-  },
-  {
-    id: "E012",
-    title: "Irish Settlers Arrive",
-    start_date: "1600",
-    interaction_type: "Relocation",
-    place: "Eastern United States",
-    description: "Irish settlers move into Indigenous lands, interacting through trade, marriage, and diplomacy.",
-    source: "Irish Settlers"
-  },
-  {
-    id: "E013",
-    title: "Acts of Union Passed",
-    start_date: "1801",
-    interaction_type: "Legal Act",
-    place: "Dublin (Mansion House)",
-    description: "Creation of the United Kingdom, dissolving Irish parliament under Westminster control.",
-    source: "Irish Famine Relief Wikipedia"
-  },
-  {
-    id: "E014",
-    title: "Treaty of Dancing Rabbit Creek",
-    start_date: "1830-09-07",
-    interaction_type: "Forced Relocation",
-    place: "Choctaw Nation",
-    description: "Choctaw cede Mississippi lands and are relocated to Indian Territory.",
-    source: "Choctaw Nation Official History"
-  },
-  {
-    id: "E015",
-    title: "Irish Missionaries",
-    start_date: "1850",
-    interaction_type: "Educational / Cultural Exchange",
-    place: "Southeastern United States",
-    description: "Irish missionaries travel to Indigenous communities for Catholic conversion efforts.",
-    source: "Irish Settlers"
-  },
-  {
-    id: "E016",
-    title: "American Civil War",
-    start_date: "1861",
-    interaction_type: "War",
-    place: "Choctaw Nation",
-    description: "Indigenous nations are divided while Irish soldiers primarily fight for the Union.",
-    source: "Choctaw Nation Official History"
-  },
-  {
-    id: "E017",
-    title: "Famine Walk",
-    start_date: "1990-05-01",
-    interaction_type: "Diplomatic / Commemorative",
-    place: "Eastern United States",
-    description: "Choctaw leaders participate in Ireland’s Famine Walk commemorations in County Mayo.",
-    source: "Choctaw Nation Official History"
-  },
-  {
-    id: "E018",
-    title: "Eamon de Valera Honorary Adoption",
-    start_date: "1919-10-18",
-    interaction_type: "Cultural Exchange",
-    place: "Choctaw Nation",
-    description: "Eamon de Valera is made an honorary Indigenous chief while fundraising for Irish independence.",
-    source: "Choctaw Delegation Visit Coverage"
-  },
-  {
-    id: "E019",
-    title: "Trek from Mississippi to Oklahoma",
-    start_date: "1992-05-01",
-    interaction_type: "Diplomatic / Commemorative",
-    place: "Choctaw Nation",
-    description: "Irish commemorative trek retraces Choctaw displacement routes in solidarity remembrance.",
-    source: "Choctaw Nation Official History"
-  },
-  {
-    id: "E020",
-    title: "Mansion House Plaque",
-    start_date: "1992-05-29",
-    interaction_type: "Diplomatic / Commemorative",
-    place: "Dublin (Mansion House)",
-    description: "Plaque unveiled honoring Choctaw famine relief contribution.",
-    source: "Navajo/Hopi COVID Aid Article"
-  },
-  {
-    id: "E021",
-    title: "COVID-19 Relief Fundraising",
-    start_date: "2020",
-    interaction_type: "Aid / Philanthropy",
-    place: "Dublin (Mansion House)",
-    description: "Irish donors raise over $3 million for Navajo and Hopi Nations during COVID-19.",
-    source: "Navajo/Hopi COVID Aid Article"
-  },
-  {
-    id: "E022",
-    title: "Eternal Heart Sculpture",
-    start_date: "2024-08-30",
-    interaction_type: "Diplomatic / Commemorative",
-    place: "Choctaw Nation",
-    description: "Unveiling of ‘Eternal Heart’ monument celebrating ongoing Irish–Choctaw friendship.",
-    source: "Kindred Spirits Sculpture Coverage"
-  },
-  {
-    id: "E023",
-    title: "Navajo Hopi Rug Gift",
-    start_date: "2025-07-17",
-    interaction_type: "Diplomatic / Commemorative",
-    place: "Choctaw Nation",
-    description: "Navajo and Hopi Nations gift a woven rug to Ireland in gratitude for COVID-era solidarity.",
-    source: "Navajo/Hopi COVID Aid Article"
-  }
+
+{
+id:"E001",
+title:"Choctaw Nation Donation to Ireland",
+date:"March 1847",
+lat:34.738,lng:-95.882,
+category:"aid",
+type:"Aid / Philanthropy",
+desc:"Choctaw Nation members raised approximately $170 for Irish famine relief shortly after enduring the Trail of Tears.",
+source:"https://www.choctawnation.com/news/iti-fabvssa/an-act-of-empathy (context: Irish famine primary accounts incl. 1847 relief reports) + https://commons.wikimedia.org/wiki/File:NilesRegister_Article_on_the_Choctaw_Contribution_for_Irish_relief.png"
+},
+
+{
+id:"E002",
+title:"Trail of Tears Relocation",
+date:"1830–1833",
+lat:33,lng:-85,
+category:"conflict",
+type:"Forced Relocation",
+desc:"Choctaw forced removal under the Indian Removal Act.",
+source:"https://www.loc.gov/item/2024791363/"
+},
+
+{
+id:"E003",
+title:"Irish Immigrant Observations of Native Struggles",
+date:"19th century",
+lat:53.142,lng:-7.692,
+category:"exchange",
+type:"Cultural Observation",
+desc:"Irish immigrant writings comparing colonial experiences.",
+source:"https://dp.la/item/68b227cc618f4f93f48f9aba16c53f24/"
+},
+
+{
+id:"E004",
+title:"Irish Famine Relief Distribution",
+date:"1847–1848",
+lat:53,lng:-8,
+category:"aid",
+type:"Aid / Philanthropy",
+desc:"Distribution of international famine relief funds.",
+source:"https://www.choctawnation.com/news/iti-fabvssa/an-act-of-empathy/"
+},
+
+{
+id:"E005",
+title:"Kindred Spirits Memorial Installation",
+date:"June 18, 2017",
+lat:51.916,lng:-8.168,
+category:"commemoration",
+type:"Commemoration / Cultural Memory",
+desc:"Sculpture commemorating Choctaw aid to Ireland.",
+source:"https://www.corkcoco.ie/en/resident/planning-and-development/public-consultations/closed-part-8-development-consultation/part-8-proposed-installation-of-36-m-high-statue-and-ancillary-site-works-at-five-foot-way-carpark"
+},
+
+{
+id:"E006",
+title:"Choctaw Delegation Visit to Ireland",
+date:"June 2017",
+lat:51.916,lng:-8.168,
+category:"exchange",
+type:"Cultural Exchange",
+desc:"Choctaw representatives visit Ireland for commemoration.",
+source:"https://www.choctawnation.com/about/history/irish-connection/"
+},
+
+{
+id:"E007",
+title:"Irish Presidential Visit to Choctaw Nation",
+date:"1995",
+lat:53.343,lng:-6.254,
+category:"commemoration",
+type:"Diplomatic / Commemorative",
+desc:"President Mary Robinson visit acknowledging Choctaw aid.",
+source:"https://president.ie/en/results?keywords=mary+robinson+choctaw"
+},
+
+{
+id:"E008",
+title:"Irish–Choctaw Scholarship and Cultural Programs",
+date:"2018–2024",
+lat:51.916,lng:-8.168,
+category:"exchange",
+type:"Educational / Cultural Exchange",
+desc:"Ongoing educational exchange programs.",
+source:"https://www.ireland.ie/en/usa/austin/news-and-events/news-archive/visit-by-taoiseach-leo-varadkar-to-the-choctaw-nation/"
+},
+
+{
+id:"E009",
+title:"Irish COVID-19 Aid to Navajo and Hopi",
+date:"2020",
+lat:36.107,lng:-109.067,
+category:"aid",
+type:"Reciprocal Aid / Philanthropy",
+desc:"Irish fundraising inspired by Choctaw history.",
+source:"https://www.ireland.ie/en/usa/austin/news-and-events/news-archive/covid-19-travel-advice/"
+},
+
+{
+id:"E012",
+title:"Irish Settlers Arrive",
+date:"1600–1800",
+lat:22,lng:-67,
+category:"conflict",
+type:"Relocation",
+desc:"Irish migration and settlement patterns in the Atlantic world.",
+source:"https://www.loc.gov/item/01011512/"
+},
+
+{
+id:"E013",
+title:"Acts of Union Passed",
+date:"1801",
+lat:53.343,lng:-6.254,
+category:"other",
+type:"Legal Act",
+desc:"Union of Great Britain and Ireland.",
+source:"https://www.parliament.uk/about/living-heritage/evolutionofparliament/legislativescrutiny/parliamentandireland/collections/ireland/act-of-union-1800/"
+},
+
+{
+id:"E014",
+title:"Treaty of Dancing Rabbit Creek",
+date:"1830–1831",
+lat:34.738,lng:-95.882,
+category:"conflict",
+type:"Forced Relocation",
+desc:"Choctaw land cession treaty.",
+source:"https://www.loc.gov/item/2022689491/"
+},
+
+{
+id:"E015",
+title:"Irish Missionaries",
+date:"1850s",
+lat:33,lng:-85,
+category:"exchange",
+type:"Educational / Cultural Exchange",
+desc:"Missionary records and correspondence.",
+source:"https://www.loc.gov/item/36016634/"
+},
+
+{
+id:"E016",
+title:"American Civil War",
+date:"1861–1865",
+lat:34.738,lng:-95.882,
+category:"conflict",
+type:"War",
+desc:"Native nations in Civil War era.",
+source:"https://www.loc.gov/search/?in=&q=american+civil+war+irish+soldier&new=true"
+},
+
+{
+id:"E017",
+title:"Famine Walk",
+date:"1990",
+lat:22,lng:-67,
+category:"commemoration",
+type:"Diplomatic / Commemorative",
+desc:"Commemorative walk linking Irish famine history and Indigenous suffering.",
+source:"https://www.museum.ie/en-IE/Collections-Research/Folklife-Collections/Folklife-Collections-List-(1)/Other/The-Great-Irish-Famine/An-Gorta-Mor"
+},
+
+{
+id:"E018",
+title:"Eamon de Valera Honorary Chieftain",
+date:"1919",
+lat:34.738,lng:-95.882,
+category:"exchange",
+type:"Cultural Exchange",
+desc:"Symbolic adoption event.",
+source:"https://catalogue.nli.ie/Collection/vtls000512255"
+},
+
+{
+id:"E019",
+title:"Trek from Mississippi to Oklahoma",
+date:"1992",
+lat:34.738,lng:-95.882,
+category:"commemoration",
+type:"Diplomatic / Commemorative",
+desc:"Re-enactment of Trail of Tears route.",
+source:"https://www.gov.ie/pdf/choctaw-ireland-1992-visit.pdf"
+},
+
+{
+id:"E020",
+title:"Mansion House Plaque",
+date:"1992",
+lat:53.343,lng:-6.254,
+category:"commemoration",
+type:"Diplomatic / Commemorative",
+desc:"Commemorative plaque installation.",
+source:"https://www.dublincity.ie/culture-art-and-film/arts-culture-and-public-spaces/mansion-house"
+},
+
+{
+id:"E021",
+title:"COVID-19 Relief",
+date:"2020–2021",
+lat:53.343,lng:-6.254,
+category:"aid",
+type:"Aid / Philanthropy",
+desc:"Irish fundraising response for Navajo/Hopi.",
+source:"https://www.ireland.ie/en/usa/austin/news-and-events/news-archive/covid-19-travel-advice/"
+},
+
+{
+id:"E022",
+title:"Eternal Heart Sculpture",
+date:"2024",
+lat:34.738,lng:-95.882,
+category:"commemoration",
+type:"Diplomatic / Commemorative",
+desc:"Choctaw memorial sculpture.",
+source:"https://www.choctawnation.com/news/news-releases/choctaw-nation-unveils-eternal-heart-sculpture/"
+},
+
+{
+id:"E023",
+title:"Navajo Hopi Rug Gift",
+date:"2025",
+lat:34.738,lng:-95.882,
+category:"commemoration",
+type:"Diplomatic / Commemorative",
+desc:"Reciprocal cultural gift exchange.",
+source:"https://www.oireachtas.ie/en/press-centre/news-and-features/20250717-navajo-rug-gifted-to-the-people-of-ireland-during-leinster-house-visit/"
+}
+
 ];
 
 // POPULATE CATEGORY FILTER
