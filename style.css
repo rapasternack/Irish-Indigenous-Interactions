@@ -3,7 +3,7 @@
 ========================= */
 body {
   margin: 0;
-  padding-top: 100px;
+  padding-top: 0px;
   font-family: 'Inter', sans-serif;
   background-color: #0f0f0f;
   color: #eae6df;
@@ -59,6 +59,10 @@ nav {
   height: 100vh;
   background: url('images/irish-indigenous.jpg') center/cover no-repeat;
   position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* DARK OVERLAY */
@@ -72,17 +76,7 @@ nav {
   justify-content: center;
   align-items: center;
   text-align: center;
-}
 
-.overlay h1 {
-  font-size: 3rem;
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 10px;
-}
-
-.overlay p {
-  font-size: 1.2rem;
-  opacity: 0.9;
 }
 
 /* =========================
