@@ -186,6 +186,53 @@ nav {
   max-width: 180px;
 }
 
+/* DATABASE PAGE */
+.page-header {
+  text-align: center;
+  padding: 40px 20px;
+  background: #111;
+  color: #fff;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* SEARCH BAR */
+#searchInput {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1a1a1a;
+  color: #eee;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+th {
+  background: #222;
+  font-family: 'Playfair Display', serif;
+}
+
+tr:hover {
+  background: #2a2a2a;
+}
+
 /* =========================
    MOBILE
 ========================= */
