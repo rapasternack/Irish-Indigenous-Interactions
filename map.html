@@ -10,43 +10,33 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <style>
-    #leaflet-map {
-      height: 560px;
+    #map {
+      height: 580px;
       width: 100%;
       border-radius: 14px;
       margin-top: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
     }
 
-    .map-panel {
+    .controls {
       display: flex;
       gap: 12px;
       align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       flex-wrap: wrap;
     }
 
-    .map-panel label {
-      font-weight: 600;
-    }
-
-    .map-panel select {
+    select {
       padding: 8px 10px;
       border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      border: 1px solid #333;
       background: #111;
-      color: #eee;
-    }
-
-    .leaflet-popup-content {
-      font-family: 'Inter', sans-serif;
-      line-height: 1.4;
+      color: #fff;
+      border: 1px solid #333;
+      font-family: Inter, sans-serif;
     }
 
     .popup-title {
@@ -57,23 +47,20 @@
 
     .popup-meta {
       font-size: 0.85rem;
-      opacity: 0.8;
+      opacity: 0.85;
     }
 
-    .popup-source {
-      margin-top: 8px;
-      font-size: 0.85rem;
+    .popup-desc {
+      margin-top: 6px;
     }
   </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-container">
     <h1 class="logo">Irish–Indigenous Interactions</h1>
-
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="methods.html">Methods</a>
@@ -87,125 +74,320 @@
 
 <main>
 
-<!-- INTRO -->
 <section class="section light">
   <div class="container">
-    <h2>Interactive Map of Irish–Indigenous Interactions</h2>
+    <h2>Interactive Map</h2>
     <p>
-      This map visualizes historical and contemporary interactions between Irish and Indigenous communities.
-      Each point represents a documented event of exchange, conflict, commemoration, or aid.
+      This map visualizes Irish–Indigenous interactions across time, showing patterns of displacement,
+      solidarity, cultural exchange, and commemoration.
     </p>
   </div>
 </section>
 
-<!-- MAP -->
 <section class="section dark">
   <div class="container">
 
-    <div class="map-panel">
-      <label for="filter">Filter events:</label>
-      <select id="filter" aria-label="Filter map events">
-        <option value="all">All Categories</option>
-        <option value="aid">Aid / Philanthropy</option>
+    <div class="controls">
+      <label for="filter">Filter:</label>
+      <select id="filter">
+        <option value="all">All</option>
+        <option value="aid">Aid</option>
         <option value="commemoration">Commemoration</option>
-        <option value="exchange">Cultural Exchange</option>
-        <option value="conflict">Conflict / Displacement</option>
+        <option value="exchange">Exchange</option>
+        <option value="conflict">Conflict</option>
       </select>
     </div>
 
-    <div id="leaflet-map"></div>
+    <div id="map"></div>
 
   </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
   <p>
     Rachel Pasternack | Digital History Project | Spring 2026 |
-    <a href="https://github.com/rapasternack/Digital-History" target="_blank">View Repository</a>
+    <a href="https://github.com/rapasternack/Digital-History" target="_blank">Repository</a>
   </p>
 </footer>
 
 <script>
-// ===================== MAP INIT =====================
-const map = L.map('leaflet-map').setView([40, -30], 3);
+
+const map = L.map('map').setView([40, -30], 3);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
-// ===================== COLOR SYSTEM =====================
-function getColor(category) {
-  switch (category) {
-    case "aid": return "#2ecc71";
-    case "commemoration": return "#3498db";
-    case "exchange": return "#f39c12";
-    case "conflict": return "#e74c3c";
-    default: return "#95a5a6";
-  }
+function color(c) {
+  return {
+    aid:"#2ecc71",
+    commemoration:"#3498db",
+    exchange:"#f39c12",
+    conflict:"#e74c3c"
+  }[c] || "#888";
 }
 
-function createIcon(color) {
+function icon(c) {
   return L.divIcon({
-    className: "",
-    html: `<div style="
-      background:${color};
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      border:2px solid #fff;
-      box-shadow:0 0 6px rgba(0,0,0,0.4);
-    "></div>`
+    html:`<div style="background:${color(c)};width:12px;height:12px;border-radius:50%;border:2px solid white"></div>`
   });
 }
 
-// ===================== DATA =====================
-const data = [/* (your dataset unchanged — omitted for brevity) */];
+/* =========================
+   FULL DATASET (CLEANED)
+========================= */
 
-// ===================== MARKERS =====================
+const data = [
+{
+id:"E001",
+title:"Choctaw Donation to Ireland",
+date:"1847",
+lat:34.738,lng:-95.882,
+category:"aid",
+type:"Philanthropy",
+desc:"Choctaw raised funds for Irish famine relief after the Trail of Tears.",
+source:"https://www.choctawnation.com/news/iti-fabvssa/an-act-of-empathy/"
+},
+{
+id:"E002",
+title:"Trail of Tears",
+date:"1830–1833",
+lat:33,lng:-85,
+category:"conflict",
+type:"Forced Relocation",
+desc:"Removal of Choctaw and other nations under U.S. policy.",
+source:"https://www.loc.gov/item/2024791363/"
+},
+{
+id:"E003",
+title:"Irish Immigrant Writings",
+date:"19th c.",
+lat:53.142,lng:-7.692,
+category:"exchange",
+type:"Cultural Observation",
+desc:"Comparisons of colonial experience in Irish immigrant writing.",
+source:"https://dp.la/item/68b227cc618f4f93f48f9aba16c53f24/"
+},
+{
+id:"E004",
+title:"Irish Famine Relief",
+date:"1847–1848",
+lat:53,lng:-8,
+category:"aid",
+type:"Humanitarian Aid",
+desc:"International famine relief including Choctaw contributions.",
+source:"https://www.choctawnation.com/news/iti-fabvssa/an-act-of-empathy/"
+},
+{
+id:"E005",
+title:"Kindred Spirits Monument",
+date:"2017",
+lat:51.916,lng:-8.168,
+category:"commemoration",
+type:"Public Memory",
+desc:"Sculpture honoring Choctaw solidarity.",
+source:"https://www.corkcoco.ie/"
+},
+{
+id:"E006",
+title:"Choctaw Delegation Ireland",
+date:"2017",
+lat:51.916,lng:-8.168,
+category:"exchange",
+type:"Diplomatic Visit",
+desc:"Cultural exchange visit.",
+source:"https://www.choctawnation.com/about/history/irish-connection/"
+},
+{
+id:"E007",
+title:"Mary Robinson Visit",
+date:"1995",
+lat:53.343,lng:-6.254,
+category:"commemoration",
+type:"Diplomatic Recognition",
+desc:"Irish president visited Choctaw Nation.",
+source:"https://president.ie/"
+},
+{
+id:"E008",
+title:"Education Exchange Programs",
+date:"2018–2024",
+lat:51.916,lng:-8.168,
+category:"exchange",
+type:"Academic Exchange",
+desc:"Scholarship and cultural programs.",
+source:"https://www.ireland.ie/"
+},
+{
+id:"E009",
+title:"COVID-19 Aid",
+date:"2020",
+lat:36.107,lng:-109.067,
+category:"aid",
+type:"Mutual Aid",
+desc:"Irish fundraising for Navajo & Hopi Nations.",
+source:"https://www.ireland.ie/"
+},
+{
+id:"E012",
+title:"Irish Migration",
+date:"1600–1800",
+lat:22,lng:-67,
+category:"conflict",
+type:"Colonial Migration",
+desc:"Irish settlement in Indigenous territories.",
+source:"https://www.loc.gov/"
+},
+{
+id:"E013",
+title:"Acts of Union",
+date:"1801",
+lat:53.343,lng:-6.254,
+category:"conflict",
+type:"Political Union",
+desc:"Formation of United Kingdom of Great Britain and Ireland.",
+source:"https://www.parliament.uk/"
+},
+{
+id:"E014",
+title:"Dancing Rabbit Creek Treaty",
+date:"1830–1831",
+lat:34.738,lng:-95.882,
+category:"conflict",
+type:"Land Cession",
+desc:"Choctaw land cession and removal.",
+source:"https://www.loc.gov/item/2022689491/"
+},
+{
+id:"E015",
+title:"Irish Missionaries",
+date:"1850s",
+lat:33,lng:-85,
+category:"exchange",
+type:"Religious Mission",
+desc:"Irish missionary activity in Indigenous regions.",
+source:"https://www.loc.gov/"
+},
+{
+id:"E016",
+title:"Civil War Era",
+date:"1861–1865",
+lat:34.738,lng:-95.882,
+category:"conflict",
+type:"War",
+desc:"Indigenous displacement during Civil War era.",
+source:"https://www.loc.gov/"
+},
+{
+id:"E017",
+title:"Famine Walk",
+date:"1990",
+lat:22,lng:-67,
+category:"commemoration",
+type:"Memory Event",
+desc:"Commemoration of Irish famine and Indigenous suffering.",
+source:"https://www.museum.ie/"
+},
+{
+id:"E018",
+title:"Éamon de Valera Honorary Chief",
+date:"1919",
+lat:34.738,lng:-95.882,
+category:"exchange",
+type:"Symbolic Recognition",
+desc:"Honorary adoption event.",
+source:"https://catalogue.nli.ie/"
+},
+{
+id:"E019",
+title:"Trek Reenactment",
+date:"1992",
+lat:34.738,lng:-95.882,
+category:"commemoration",
+type:"Historical Reenactment",
+desc:"Re-tracing Trail of Tears route.",
+source:"https://www.gov.ie/"
+},
+{
+id:"E020",
+title:"Mansion House Plaque",
+date:"1992",
+lat:53.343,lng:-6.254,
+category:"commemoration",
+type:"Memorial",
+desc:"Plaque honoring Choctaw aid.",
+source:"https://www.dublincity.ie/"
+},
+{
+id:"E021",
+title:"COVID Relief Fund",
+date:"2020–2021",
+lat:53.343,lng:-6.254,
+category:"aid",
+type:"Humanitarian Aid",
+desc:"Pandemic solidarity fundraising.",
+source:"https://www.ireland.ie/"
+},
+{
+id:"E022",
+title:"Eternal Heart Sculpture",
+date:"2024",
+lat:34.738,lng:-95.882,
+category:"commemoration",
+type:"Monument",
+desc:"Choctaw memorial sculpture.",
+source:"https://www.choctawnation.com/"
+},
+{
+id:"E023",
+title:"Navajo Rug Gift",
+date:"2025",
+lat:34.738,lng:-95.882,
+category:"commemoration",
+type:"Cultural Exchange",
+desc:"Reciprocal gift from Navajo & Hopi Nations.",
+source:"https://www.oireachtas.ie/"
+}
+];
+
+/* =========================
+   MARKERS
+========================= */
+
 const markers = [];
 
-data.forEach(item => {
-  const marker = L.marker([item.lat, item.lng], {
-    icon: createIcon(getColor(item.category))
+data.forEach(d => {
+  const m = L.marker([d.lat, d.lng], {
+    icon: icon(d.category)
   });
 
-  marker.category = item.category;
+  m.category = d.category;
 
-  marker.bindPopup(`
-    <div class="popup-title">${item.title}</div>
-
-    <div class="popup-meta">
-      <strong>Type:</strong> ${item.type}<br>
-      <strong>Date:</strong> ${item.date}<br>
-    </div>
-
-    <p style="margin-top:8px;">${item.desc}</p>
-
-    <div class="popup-source">
-      <strong>Source:</strong><br>
-      <a href="${item.source}" target="_blank" rel="noopener noreferrer">
-        View archival record
-      </a>
+  m.bindPopup(`
+    <div class="popup-title">${d.title}</div>
+    <div class="popup-meta">${d.type} | ${d.date}</div>
+    <div class="popup-desc">${d.desc}</div>
+    <div style="margin-top:8px;">
+      <a href="${d.source}" target="_blank" rel="noopener">View Source</a>
     </div>
   `);
 
-  marker.addTo(map);
-  markers.push(marker);
+  m.addTo(map);
+  markers.push(m);
 });
 
-// ===================== FILTER =====================
-document.getElementById("filter").addEventListener("change", function () {
-  const value = this.value;
+/* =========================
+   FILTER
+========================= */
 
-  markers.forEach(marker => {
-    if (value === "all" || marker.category === value) {
-      marker.addTo(map);
-    } else {
-      map.removeLayer(marker);
-    }
+document.getElementById("filter").addEventListener("change", e => {
+  const val = e.target.value;
+
+  markers.forEach(m => {
+    if (val === "all" || m.category === val) m.addTo(map);
+    else map.removeLayer(m);
   });
 });
 
