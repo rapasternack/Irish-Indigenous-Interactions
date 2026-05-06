@@ -256,10 +256,17 @@ nav {
 
 .timeline-media {
   width: 150px;
+  height: 150px;
+  object-fit: cover;
+
+  border-radius: var(--radius-sm);
+  border: 2px solid #111;
+
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  gap: 6px;
 }
 
 .timeline-media a {
