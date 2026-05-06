@@ -46,7 +46,4 @@ rapasternack413@gmail.com
 
 # Acknowledgments
 - Dr. B. Skopyk and the HIST 501D Class
-- Library of Congress Digital Collections
-- Smithsonian Institution Digital Archives
-- National Archives (UK)
 - The Choctaw, Hopi, and Navajo Nations
