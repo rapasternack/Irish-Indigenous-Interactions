@@ -1,5 +1,5 @@
 /* =========================
-   DESIGN TOKENS
+   DESIGN
 ========================= */
 :root {
   --bg: #0f0f0f;
@@ -23,7 +23,7 @@
 }
 
 /* =========================
-   GLOBAL RESET / BASE
+   GLOBAL BASE
 ========================= */
 * {
   box-sizing: border-box;
@@ -80,7 +80,7 @@ p {
 }
 
 /* =========================
-   LINKS (CLEAN & CONSISTENT)
+   LINKS
 ========================= */
 a {
   color: var(--text);
@@ -93,7 +93,7 @@ a:hover {
 }
 
 /* =========================
-   NAVIGATION (REFINED)
+   NAVIGATION
 ========================= */
 nav {
   position: fixed;
@@ -140,7 +140,7 @@ nav {
 }
 
 /* =========================
-   HERO (REFINED READABILITY)
+   HERO
 ========================= */
 .hero {
   height: 100vh;
@@ -187,7 +187,7 @@ nav {
 }
 
 /* =========================
-   GRID SYSTEM (FIXED + CONSISTENT)
+   GRID SYSTEM
 ========================= */
 .grid {
   display: grid;
@@ -196,7 +196,7 @@ nav {
 }
 
 /* =========================
-   CARDS (CLEANER + UNIFIED)
+   CARDS
 ========================= */
 .card {
   background: var(--surface);
@@ -218,7 +218,7 @@ nav {
 }
 
 /* =========================
-   TIMELINE (IMPROVED RHYTHM)
+   TIMELINE
 ========================= */
 .timeline {
   margin: 60px 0;
@@ -281,7 +281,7 @@ nav {
 }
 
 /* =========================
-   TABLES (DATABASE CLEANUP)
+   TABLES
 ========================= */
 table {
   width: 100%;
